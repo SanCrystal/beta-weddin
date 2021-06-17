@@ -1,6 +1,8 @@
 /**
  * create an express server
  */
+// require cors
+const cors = require("cors")
 //require path 
 const path = require("path");
 //require express
@@ -26,6 +28,8 @@ db();
 
 //initailize app 
 const app = express();
+// cors setup for express app
+app.use(cors());
 //use body parser
 app.use(express.json());
 //use cookie passer
