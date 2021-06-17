@@ -21,7 +21,7 @@ module.exports.postLogin = async(req, res) => {
         //check if there is no user
         if (!user) return res.status(404).json({ message: ' no user with that email' });
 
-        console.log(password, user.password)
+        // console.log(password, user.password)
             //if there is a user compare passwords and generate token
         if (await decrypt(password, user.password)) {
             const token = await genToken(user._id);
@@ -51,7 +51,7 @@ module.exports.postSignup = async(req, res) => {
         });
         //create a token for the user 
         const token = await genToken(user._id);
-        console.log(user)
+        // console.log(user)
             //send token to client  in a cookie
         res.cookie('jwt', token, { maxAge: 1000 * 3 * 24 * 60 * 60, httpOnly: true, secure: false, sameSite: "strict" });
         res.status(200).json({ payload: user })
@@ -78,8 +78,8 @@ module.exports.postUpdatePassword = async(req, res) => {
         const user = await User.findOne({ email });
         //check if there is no user
         if (!user) return res.status(404).json({ message: ' no user with that email' });
-        console.log(password, user.password);
-        console.log(await decrypt(password, user.password));
+        // console.log(password, user.password);
+        // console.log(await decrypt(password, user.password));
         //if there is a user compare current password
         if (await decrypt(password, user.password)) {
             //generate a token and send to email expires in 10* 60 seconds = 10mins
