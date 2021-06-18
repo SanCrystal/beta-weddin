@@ -8,7 +8,7 @@ require('dotenv').config()
 //require connection string
 const connectionString = process.env.URL
     // const connectionString = "../../server.json";
-console.log(connectionString)
+// console.log(connectionString)
 
 module.exports.db = () => {
 
