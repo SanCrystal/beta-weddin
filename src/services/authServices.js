@@ -13,14 +13,14 @@ require('dotenv').config({ path: path.dirname(__dirname).split(path.sep).slice(0
 module.exports.encrypt = async(data) => {
     const salt = await bcrypt.genSalt(10);
     const hash = await bcrypt.hash(data, salt);
-    return hash;
+    return await hash;
 
 };
 
 //validate password
 module.exports.decrypt = async(unencrpted, encrpted) => {
     const result = await bcrypt.compare(unencrpted, encrpted)
-    return result;
+    return await result;
 };
 
 //generate jwt token

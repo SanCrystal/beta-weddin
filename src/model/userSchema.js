@@ -28,10 +28,10 @@ const userSchema = new Schema({
     })
     //pre save hook
 userSchema.pre('save', async function(next) {
-    try {
-        if (this.isModified("password") || (this.isNew)) {
-            this.password = await encrypt(this.password);
 
+    try {
+        if (this.password || (this.isNew)) {
+            this.password = await encrypt(this.password);
         }
         next();
     } catch (error) {

@@ -31,8 +31,6 @@ module.exports.postLogin = async(req, res) => {
         return res.status(401).json({ message: " please enter a valid password" })
     } catch (error) {
         const errMessage = await errorHandler(error, email)
-        console.log("this is errmessage", errMessage)
-        console.log(error)
         if (errMessage) await res.status(500).json({ message: errMessage })
     }
 
@@ -166,7 +164,7 @@ module.exports.putRecoveryPassword = async(req, res) => {
 
     //get the user from db and update password and save
     const user = await User.findOneAndUpdate({ email }, { password: newPassword }, { new: true });
-    if (!user) return res.status(404).json({ message: "user not found" })
+    if (!user) return res.status(404).json({ message: `${email} is not registered!` });
     await user.save();
 
     return res.status(200).json({ message: "password was successfully updated", url: "/auth/login" });

@@ -6,9 +6,9 @@ const mongoose = require('mongoose');
 require('dotenv').config()
 
 //require connection string
-const connectionString = process.env.URL
+const connectionString = process.env.MONGO_URL
     // const connectionString = "../../server.json";
-// console.log(connectionString)
+    // console.log(connectionString)
 
 module.exports.db = () => {
 
@@ -17,8 +17,6 @@ module.exports.db = () => {
         useUnifiedTopology: true,
         useNewUrlParser: true,
         useFindAndModify: false
-    }, () => {
-        console.log("database connected")
-    })
+    }).then(success => console.log("database connected")).catch(error => console.log(error))
 
 }
