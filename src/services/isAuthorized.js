@@ -24,7 +24,7 @@ module.exports.isAuthorized = async(req, res, next) => { //check if user is logg
         }
 
     } else {
-        // res.locals.email = null;
+        res.locals.email = null;
         res.redirect('/auth/login');
         // res.status(401).json({ message: "Access denied, must be logged in " });
     };
