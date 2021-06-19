@@ -1,7 +1,9 @@
 /**
  * create an express server
  */
-//require path 
+// require cors
+const cors = require("cors")
+    //require path 
 const path = require("path");
 //require express
 const express = require('express');
@@ -32,6 +34,8 @@ const app = express();
 app.set('view engine', ejs);
 //set views default path
 app.set('views', path.join(__dirname + '/views'));
+// cors setup for express app
+app.use(cors());
 //use body parser
 app.use(express.json());
 

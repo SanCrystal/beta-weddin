@@ -53,6 +53,7 @@ module.exports.postSignup = async(req, res) => {
         });
         //create a token for the user 
         const token = await genToken(user._id);
+
         //send token to client  in a cookie
         res.cookie('jwt', token, { maxAge: 1000 * 3 * 24 * 60 * 60, httpOnly: true, secure: false, sameSite: "strict" });
         //redirect to home page
