@@ -1,7 +1,7 @@
 //require express router
 const router = require('express').Router();
 //require auth controller
-const { getLogin, postLogin, getSignup, postSignup, getLogout, getUpdatePassword, postUpdatePassword, postRecoveryPassword, getRecoveryPassword } = require('../controller/authController');
+const { getLogin, postLogin, getSignup, postSignup, getLogout, getUpdatePassword, postUpdatePassword, forgotPassword, postRecoveryPassword, getRecoveryPassword, putRecoveryPassword, getRecoverySuccessPage } = require('../controller/authController');
 
 //login route get
 router.get('/login', getLogin);
@@ -19,9 +19,16 @@ router.get('/logout', getLogout);
 router.post('/update-password', postUpdatePassword);
 //change password get route
 router.get('/update-password/:token', getUpdatePassword);
-//recovery password get route
-router.get('/recovery-auth-pass/:token', getRecoveryPassword);
+//forgot password route
+router.get('/recovery-request', forgotPassword); //send url with email params
 //recovery password get route
 router.post('/recovery-auth-pass', postRecoveryPassword);
+//recovery link successfully sent
+router.get('/recovery-link-success', getRecoverySuccessPage)
+    //recovery password get route
+router.get('/recovery-auth-pass/:token', getRecoveryPassword);
+//recovery password get route
+router.put('/recovery-auth-pass/:token', putRecoveryPassword);
+
 
 module.exports = router;

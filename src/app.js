@@ -5,6 +5,8 @@
 const path = require("path");
 //require express
 const express = require('express');
+//require ejs
+const ejs = require('ejs');
 //require cookie parser
 const cookieParser = require('cookie-parser')
     //require database 
@@ -13,7 +15,7 @@ const { db } = require('./db/db');
 require('dotenv').config()
 const PORT = process.env.PORT;
 //require auth service
-const { genToken, encrypt, decrypt } = require('./services/authServices');
+const { isAuthorized } = require('./services/isAuthorized');
 //require auth routes
 const authRoutes = require('./routes/authRoutes');
 
@@ -26,15 +28,23 @@ db();
 
 //initailize app 
 const app = express();
+//set view engine 
+app.set('view engine', ejs);
+//set views default path
+app.set('views', path.join(__dirname + '/views'));
 //use body parser
 app.use(express.json());
+
 //use cookie passer
 app.use(cookieParser());
 //require auth routes
 app.use('/auth', authRoutes);
+//serve static files
+app.use('/static', express.static(path.join(__dirname, "frontend")))
+app.get('*', isAuthorized);
 //home route
 app.get('/', (req, res) => {
-    res.send(' home page');
+    res.render('index.ejs');
 });
 //listen to port 
 app.listen(PORT, () => console.log(`server is up on port ${PORT}`))

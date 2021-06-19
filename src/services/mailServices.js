@@ -32,13 +32,13 @@ module.exports.emailer = async(recieversEmail, subject, token, template) => {
     //change password template
 module.exports.changePasswordTemplate = (token) => { return `<div>
 <h2>Password change page</h2>
-<p><a href="auth/update-password/${token}">authorize password change</a></p>
+<p><a href="http://localhost:5500/auth/update-password/${token}">authorize password change</a></p>
 </div>
 ` }
     //recovery password template
 module.exports.recoveryPasswordTemplate = (token) => { return `<div>
 <h2>Password recovery page</h2>
-<p><a href="auth/recovery-auth-pass/${token}">authorize password recovery</a></p>
+<p><a href="http://localhost:5500/auth/recovery-auth-pass/${token}">authorize password recovery</a></p>
 </div>
 ` }
 

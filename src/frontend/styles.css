@@ -1,0 +1,36 @@
+body {
+    background-color: gray;
+    color: white;
+    font-size: 14px;
+}
+
+.form-div {
+    position: relative;
+    background-color: darkgrey;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.server-error,
+.server-response,
+.error {
+    color: rgb(189, 11, 11);
+}
+
+.email {
+    opacity: 0.1;
+}
+
+form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(70, 67, 67);
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+    width: 35vw;
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/styles.css">
+    <title>authentication</title>
+</head>
+
+<body>
+    <div class="wrapper ">
+        <header>
+            <h1>recovery password page</h1>
+        </header>
+
+    </div>
+    <div class="server-response"></div>
+    <form action="/static/recovery-password.js" method="POST">
+        <label for="email">email</label>
+        <div class="error">
+
+        </div>
+        <input type="email" name="email" id="email">
+        <button type="submit">recover password</button>
+    </form>
+
+</body>
+
+<script type="text/javascript" src="/static/recovery-password.js"></script>
+
+</html>

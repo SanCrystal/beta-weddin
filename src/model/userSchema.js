@@ -22,13 +22,22 @@ const userSchema = new Schema({
         },
         password: {
             type: String,
-            required: true
+            required: true,
+
         }
     })
     //pre save hook
 userSchema.pre('save', async function(next) {
-    this.password = await encrypt(this.password);
-    next();
+    try {
+        if (this.isModified("password") || (this.isNew)) {
+            this.password = await encrypt(this.password);
+
+        }
+        next();
+    } catch (error) {
+        return error
+    }
 });
+
 const User = mongoose.model('user', userSchema);
 module.exports = User;
