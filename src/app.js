@@ -15,7 +15,7 @@ const cookieParser = require('cookie-parser')
 const { db } = require('./db/db');
 //require env file
 require('dotenv').config()
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5500;
 //require auth service
 const { isAuthorized } = require('./services/isAuthorized');
 //require auth routes
