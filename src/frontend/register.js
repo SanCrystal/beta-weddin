@@ -29,7 +29,8 @@ form.addEventListener('submit', async(e) => {
         });
         const data = await result;
         if (data.status == 200) {
-            location.assign('/')
+            const dataBody = await result.json();
+            location.assign(`${dataBody.url}`)
         } else {
             const dataBody = await result.json();
             serverError.innerHTML = `<p>${dataBody.message}</p>`

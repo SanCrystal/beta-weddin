@@ -26,7 +26,7 @@ module.exports.postLogin = async(req, res) => {
             const token = await genToken(user._id);
             res.cookie('jwt', token, { maxAge: 1000 * 3 * 24 * 60 * 60, httpOnly: true, secure: false, sameSite: "strict" });
             res.locals = email;
-            return res.status(200).redirect('/')
+            return res.status(200).json({ message: ' Login successful', url: '/' });
         }
         return res.status(401).json({ message: " please enter a valid password" })
     } catch (error) {
@@ -55,7 +55,7 @@ module.exports.postSignup = async(req, res) => {
         //send token to client  in a cookie
         res.cookie('jwt', token, { maxAge: 1000 * 3 * 24 * 60 * 60, httpOnly: true, secure: false, sameSite: "strict" });
         //redirect to home page
-        res.status(200).redirect('/');
+        res.status(200).json({ message: ' sign up successful', url: '/' });
     } catch (error) {
         const errMessage = await errorHandler(error, email)
         if (errMessage) await res.status(500).json({ message: errMessage })
