@@ -7,10 +7,13 @@ const emailValidator = (email) => {
         return email.match(format) ? true : false;
     } //name validator
 const nameCheck = (name) => {
-    const lastName = name.split(" ")[0];
-    const firstName = name.split(" ")[1];
-    console.log(lastName, firstName, !lastName.includes('.'), !firstName.includes('.'))
-    return (lastName.length >= 2) && (firstName.length >= 2) && !lastName.includes('.') && !firstName.includes('.') ? true : false;
+    const result = [];
+    const tester = /\d|\./;
+    const nameArr = name.split(" ").filter((e) => { return e.trim() != "" });
+    nameArr.forEach((name) => {
+        result.push(!tester.test(name) && name.length >= 2)
+    });
+    return result.includes(false) ? false : true;
 };
 form.addEventListener('submit', async(e) => {
     e.preventDefault();
@@ -47,9 +50,9 @@ form.addEventListener('submit', async(e) => {
                 } else if (data.status == 503) {
                     // const dataBody = await result.json();
                     serverError.innerHTML = `<p>Service is temporary down, we regret every inconvinience this may cause you</p>`
-                } else {
-                    // const dataBody = await result.json();
-                    serverError.innerHTML = `<p>${data}</p>`
+                } else if (data.status == 500) {
+                    const dataBody = await result.json();
+                    serverError.innerHTML = `<p>${dataBody.message}</p>`
                 }
             } else {
                 //if password do not match
