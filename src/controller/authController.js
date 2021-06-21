@@ -42,10 +42,11 @@ module.exports.getSignup = async(req, res) => {
 };
 //post signup handler
 module.exports.postSignup = async(req, res) => {
-    const { email, password } = req.body;
+    const { email, password, fullName } = req.body;
 
     try {
         const user = await User.create({
+            fullName,
             email,
             password
         });

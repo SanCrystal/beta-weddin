@@ -15,7 +15,7 @@ body {
 .server-error,
 .server-response,
 .error {
-    color: rgb(189, 11, 11);
+    color: rgb(255, 46, 133);
 }
 
 .email {

@@ -15,14 +15,17 @@
         <div class="form-div">
             <div class="server-response"></div>
             <form action="/static/register.js" method="POST">
-
-                <label for="email">email</label>
                 <div class="error">
 
                 </div>
+                <label for="fullName">Full Name</label>
+                <input type="text" name="fullName" placeholder="eg. Santa BashKing" required>
+                <label for="email">email</label>
                 <input type="text" name="email" id="email" required>
                 <label for="password">password</label>
                 <input type="password" name="password" id="password" required>
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" name="confirmPassword" id="confirmPassword">
                 <button type="submit">sign up</button>
             </form>
 
