@@ -31,9 +31,12 @@ form.addEventListener('submit', async(e) => {
         if (data.status == 200) {
             const dataBody = await result.json();
             location.assign(`${dataBody.url}`)
+        } else if (data.status == 503) {
+            // const dataBody = await result.json();
+            serverError.innerHTML = `<p>${data.statusText}</p>`
         } else {
-            const dataBody = await result.json();
-            serverError.innerHTML = `<p>${dataBody.message}</p>`
+            // const dataBody = await result.json();
+            serverError.innerHTML = `<p>${data}</p>`
         }
     } else {
         error.innerHTML = "<p>please enter a invalid email</p>"
