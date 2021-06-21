@@ -60,6 +60,7 @@ form.addEventListener('submit', async(e) => {
             error.innerHTML = "<p>please enter a invalid email</p>"
         }
     } else {
+        //check if the name is above or equal to two characters long
         error.innerHTML = "<p>First name  or last name cannot be an abbreviation</p>"
     }
 })
