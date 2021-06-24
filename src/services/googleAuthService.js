@@ -14,7 +14,7 @@ passport.use(
         new GoogleStrategy({
             clientID: process.env.GOOGLE_CLIENT_ID,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-            callbackURL: '/auth/google-auth-redirect'
+            callbackURL: `${process.env.CURRENT_HOST}/auth/google-auth-redirect`
         }, async(accessToken, refreshToken, profile, done) => {
             const currentUser = profile._json;
             //check if there is a user in the database with current google ID associated with the given mail

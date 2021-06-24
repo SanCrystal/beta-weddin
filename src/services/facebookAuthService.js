@@ -14,7 +14,7 @@ passport.use(
         new FacebookStrategy({
             clientID: process.env.FACEBOOK_CLIENT_ID,
             clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
-            callbackURL: '/auth/facebook-auth-redirect',
+            callbackURL: `${process.env.CURRENT_HOST}/auth/facebook-auth-redirect`,
             profileFields: ['id', 'displayName', 'email', 'name', 'verified']
         }, async(accessToken, refreshToken, profile, done) => {
             const currentUser = profile._json;
