@@ -22,6 +22,22 @@ body {
     opacity: 0.1;
 }
 
+.url-btn {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.btn-div {
+    display: flex;
+}
+
+.btb {
+    visibility: hidden;
+    display: flex;
+    flex: 2
+}
+
 form {
     position: absolute;
     top: 50%;
