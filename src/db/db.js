@@ -7,8 +7,8 @@ require('dotenv').config()
 
 //require connection string
 const connectionString = process.env.MONGO_URL
-    // const connectionString = "../../server.json";
-    // console.log(connectionString)
+    // const connectionString = process.env.URL
+
 
 module.exports.db = () => {
 

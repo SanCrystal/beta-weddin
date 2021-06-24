@@ -28,6 +28,14 @@ const userSchema = new Schema({
             type: String,
             required: true,
 
+        },
+        googleId: {
+            type: String,
+            required: false
+        },
+        facebookId: {
+            type: String,
+            required: false
         }
     })
     //pre save hook

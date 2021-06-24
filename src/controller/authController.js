@@ -5,14 +5,27 @@ const { errorHandler } = require('../services/errorService');
 //require the emailer service
 const { emailer, recoveryPasswordTemplate, changePasswordTemplate } = require('../services/mailServices');
 //require auth service
-const { genToken, encrypt, decrypt, decodeToken } = require('../services/authServices');
+const { genToken, decrypt, decodeToken } = require('../services/authServices');
 
+
+
+//google auth handler
+module.exports.googleAuthHandler = (req, res) => {
+    res.locals.email = req.user.email;
+    return res.status(200).redirect(req.get('referer'));
+
+};
+//facebook auth handler
+module.exports.facebookAuthHandler = async(req, res) => {
+    res.locals.email = req.user.email;
+    return res.status(200).redirect('/');
+
+};
 //get login handler
 module.exports.getLogin = async(req, res) => {
     //render login page
     return res.status(200).render('login.ejs')
 };
-
 //post login handler
 module.exports.postLogin = async(req, res) => {
     const { email, password } = req.body;
@@ -68,6 +81,7 @@ module.exports.postSignup = async(req, res) => {
 //get logout handler
 module.exports.getLogout = async(req, res) => {
     res.cookie('jwt', '', { maxAge: 1 });
+    req.logout();
     //redirect to home page
     res.status(200).redirect('/')
 };

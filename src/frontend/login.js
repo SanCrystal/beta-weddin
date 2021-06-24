@@ -48,4 +48,16 @@ form.addEventListener('submit', async(e) => {
 })
 
 
-// console.log(email.match(format))
+//login in with gmail
+// const logInWithEmail = document.querySelector('.login-with-google');
+// logInWithEmail.addEventListener('click', async(e) => {
+//     e.preventDefault();
+//     console.log(e)
+//     const res = await fetch('google/user-consent', { headers: { "Content-Type": "application/json" }, mode: "cors", redirect: 'follow', method: "GET", body: null });
+//     // const data = await res.json
+//     console.log(res)
+//     if (res.status == 200) { location.assign(data.url) } else {
+//         location.assign('/login')
+//     }
+
+// });
