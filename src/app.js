@@ -28,6 +28,8 @@ const facebookAuthService = require('./services/facebookAuthService');
 const { isAuthorized, isAuthorizedHome } = require('./services/isAuthorized');
 //require auth routes
 const authRoutes = require('./routes/authRoutes');
+//require dashboard routes
+const dashboardRoutes = require('./routes/dashboardRoutes')
 
 //require user
 const User = require('./model/userSchema')
@@ -69,6 +71,8 @@ app.get('/', isAuthorizedHome, (req, res) => {
 });
 //require auth routes
 app.use('/auth', authRoutes);
+//use dashboard routes
+app.use('/dashboard', isAuthorized, dashboardRoutes);
 
 
 //listen to port 

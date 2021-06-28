@@ -12,7 +12,7 @@ const { genToken, decrypt, decodeToken } = require('../services/authServices');
 //google auth handler
 module.exports.googleAuthHandler = (req, res) => {
     res.locals.email = req.user.email;
-    return res.status(200).redirect(req.get('referer'));
+    return res.status(200).redirect(req.get('/dashboard'));
 
 };
 //facebook auth handler
@@ -39,7 +39,7 @@ module.exports.postLogin = async(req, res) => {
             const token = await genToken(user._id);
             res.cookie('jwt', token, { maxAge: 1000 * 3 * 24 * 60 * 60, httpOnly: true, secure: false, sameSite: "strict" });
             res.locals = email;
-            return res.status(200).json({ message: ' Login successful', url: '/' });
+            return res.status(200).json({ message: ' Login successful', url: '/dashboard' });
         }
         return res.status(401).json({ message: " please enter a valid password" })
     } catch (error) {
@@ -68,8 +68,8 @@ module.exports.postSignup = async(req, res) => {
 
         //send token to client  in a cookie
         res.cookie('jwt', token, { maxAge: 1000 * 3 * 24 * 60 * 60, httpOnly: true, secure: false, sameSite: "strict" });
-        //redirect to home page
-        res.status(200).json({ message: ' sign up successful', url: '/' });
+        //redirect to dashboard page
+        res.status(200).json({ message: ' sign up successful', url: '/dashboard' });
     } catch (error) {
         const errMessage = await errorHandler(error, email)
         if (errMessage) await res.status(500).json({ message: errMessage })
@@ -102,10 +102,10 @@ module.exports.postUpdatePassword = async(req, res) => {
             const token = await genToken({ id: user._id, newPassword }, validTime = 10 * 60);
 
             //send token to the email
-            const emailStatus = await emailer(user.email, 'Change password Request', token, changePasswordTemplate)
+            const emailStatus = await emailer({ recieversEmail: user.email, subject: 'Change password Request', token, template: changePasswordTemplate })
             if (emailStatus) return res.status(200).json({ message: "email sent" })
 
-        };
+        }; //{recieversEmail, subject, token, template}
 
         return res.status(401).json({ message: "invalid password" });
     } catch (error) {
@@ -146,7 +146,8 @@ module.exports.postRecoveryPassword = async(req, res) => {
         const token = await genToken({ id: user._id }, validTime = 120 * 60);
 
         //send token to the email
-        const emailStatus = await emailer(user.email, 'Recovery password Request', token, recoveryPasswordTemplate);
+        const emailStatus = await emailer({ recieversEmail: user.email, subject: 'Recovery password Request', token, template: recoveryPasswordTemplate })
+
         // return res.status(200).render('recovery-link-sent.ejs', { email })
         res.status(200).json({ url: `/auth/recovery-link-success?email=${email}` });
 

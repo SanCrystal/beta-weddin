@@ -5,8 +5,11 @@ require('dotenv').config();
 
 //create transport
 
-module.exports.emailer = async(recieversEmail, subject, token, template) => {
+module.exports.emailer = async(mailDetails) => {
+        const sender = mailDetails.sender ? mailDetails.sender : process.env.EMAIL_SENDER;
+        const senderName = mailDetails.senderName ? mailDetails.senderName : process.env.EMAIL_USER;
 
+        const html = mailDetails.token ? await mailDetails.template(mailDetails.token) : mailDetails.template
 
         // create reusable transporter object using the default SMTP transport
         let transporter = nodemailer.createTransport({
@@ -21,10 +24,10 @@ module.exports.emailer = async(recieversEmail, subject, token, template) => {
 
         // send mail with defined transport object
         let mailOptions = await transporter.sendMail({
-            from: `"${process.env.EMAIL_SENDER}" <${process.env.EMAIL_USER}>`, // sender's name and  address
-            to: recieversEmail, // list of receiver(s)
-            subject: subject, // Subject line
-            html: await template(token) // html body
+            from: `"${sender}" <${senderName}>`, // sender's name and  address
+            to: mailDetails.recieversEmail, // list of receiver(s)
+            subject: mailDetails.subject, // Subject line
+            html: await html // html body
         });
         return mailOptions.messageId;
 

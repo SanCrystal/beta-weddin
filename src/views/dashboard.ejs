@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="static/styles.css">
+    <title>authentication</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <h1>Dash Board</h1>
+            <% if(email){%>
+                <div>welcome
+                    <%= email%>
+                </div>
+                <%}%>
+        </header>
+
+    </div>
+    <div class="form-div">
+        <div class="server-response"></div>
+        <form action="/static/send-invite.js" method="POST">
+            <div class="error">
+
+            </div>
+            <label for="subject">subject</label>
+            <input type="text" name="subject" placeholder="subject" required>
+            <label for="email">sender name</label>
+            <input type="text" name="senderName" id="senderName" required>
+            <label for="bridesName">Brides Name</label>
+            <input type="text" name="bridesName" id="bridesName" required>
+            <label for="groomsName">Grooms Name</label>
+            <input type="text" name="groomsName" id="groomsName">
+            <label for="groomfamiliesName">Groom Familie's Name</label>
+            <input type="text" name="groomfamiliesName" id="groomfamiliesName">
+            <label for="bridefamiliesName">Bride Familie's Name</label>
+            <input type="text" name="bridefamiliesName" id="bridefamiliesName">
+            <label for="courtesyFamily">Courtesy Family</label>
+            <input type="text" name="courtesyFamily" id="courtesyFamily">
+            <label for="dateOfWedding">Date Of Wedding</label>
+            <input type="date" name="dateOfWedding" id="dateOfWedding">
+            <label for="emailList">Email Contact list</label>
+            <input type="textarea" name="emailList" id="emailList" placeholder="seperate emails with commas (,)">
+
+            <button type="submit">send invitation</button>
+        </form>
+
+    </div>
+    <a href="/send-invite">send invitation</a>
+    </div>
+
+</body>
+<script type="text/javascript" src="/static/send-invite.js"></script>
+
+</html>
