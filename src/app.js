@@ -26,6 +26,8 @@ const googleAuthService = require('./services/googleAuthService');
 const facebookAuthService = require('./services/facebookAuthService');
 //require auth service
 const { isAuthorized, isAuthorizedHome } = require('./services/isAuthorized');
+//require base routes
+const baseRoutes = require('./routes/baseRoutes');
 //require auth routes
 const authRoutes = require('./routes/authRoutes');
 //require dashboard routes
@@ -62,14 +64,11 @@ app.use(passport.session());
 //use cookie passer
 app.use(cookieParser());
 //serve static files
-app.use('/static', express.static(path.join(__dirname, "frontend")));
+app.use(express.static(path.join(__dirname, "frontend")));
 // app.get('*', isAuthorized);
-//home route
-app.get('/', isAuthorizedHome, (req, res) => {
-    res.render('index.ejs');
-
-});
-//require auth routes
+//use base routes
+app.use(baseRoutes);
+//use auth routes
 app.use('/auth', authRoutes);
 //use dashboard routes
 app.use('/dashboard', isAuthorized, dashboardRoutes);

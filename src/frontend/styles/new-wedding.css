@@ -1,0 +1,21 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #F2CFF0;
+}
+
+header {
+    background: #F9F2F7;
+}
+
+.btn-primary {
+    background: #5E194E;
+    color: #fff !important;
+    border: none;
+}
+
+.btn-primary:hover {
+    background: #fff;
+    color: #5E194E !important;
+    border: 1px solid #5E194E;
+}

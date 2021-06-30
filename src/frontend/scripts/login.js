@@ -12,10 +12,11 @@ form.addEventListener('submit', async(e) => {
     const email = form.email.value;
     const password = form.password.value;
     const error = document.querySelector('.error')
-    const serverError = document.querySelector('.server-response');
-    serverError.innerHTML = ""
+        // const serverError = document.querySelector('.server-response');
+        // serverError.innerHTML = ""
 
     if (emailValidator(email)) {
+        error.classList.add('d-none')
         error.innerHTML = ""
             //make a fetch request to /login
         const result = await fetch('login', {
@@ -34,13 +35,16 @@ form.addEventListener('submit', async(e) => {
             location.assign(`${dataBody.url}`)
         } else if (data.status == 401) {
             const dataBody = await result.json();
-            serverError.innerHTML = `<p>${dataBody.message}</p>`
+            error.classList.remove('d-none')
+            error.innerHTML = `<p>${dataBody.message}</p>`
         } else if (data.status == 500) {
             const dataBody = await result.json();
-            serverError.innerHTML = `<p>${dataBody.message}</p>`
+            error.classList.remove('d-none')
+            error.innerHTML = `<p>${dataBody.message}</p>`
         } else if (data.status == 404) {
             const dataBody = await result.json();
-            serverError.innerHTML = `<p>${dataBody.message}</p>`
+            error.classList.remove('d-none')
+            error.innerHTML = `<p>${dataBody.message}</p>`
         }
     } else {
         error.innerHTML = "<p>please enter a invalid email</p>"

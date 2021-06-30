@@ -1,45 +1,65 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/styles.css">
-    <title>authentication</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+    <!-- Custom style -->
+    <link rel="stylesheet" href="/styles/login.css">
+
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap" rel="stylesheet">
+
+    <title>Beta-weddin</title>
 </head>
 
 <body>
-    <div class="wrapper">
-        <div class="form-div">
-            <div class="server-response"></div>
-            <form action="/static/login.js" method="POST">
-                <label for="email">email</label>
-                <div class="error">
+    <div class="login-page">
+        <div class="container-fluid">
+            <div class="d-none" id="loader"></div>
+            <div class="row align-items-center" id="login">
+                <div class="col-lg-6 right-wrapper px-5">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div class="right-wrapper__header">
+                                <h2 class="form-header pt-5">Welcome back, <span class="sign-up">Sign In</span> to continue </h2>
+                            </div>
+                            <div class="alert alert-danger text-white d-none server-response"></div>
+                            <form class="py-5" id="form" method="post">
+                                <div class="error text-danger" id=""></div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" required id="email" placeholder="Please enter a valid email address">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="password" class="form-label">Password</label>
+                                    <input type="password" id="password" required class="form-control" placeholder="Please enter your  password">
+                                </div>
+                                <div class="mb-3">
+                                    <a href="/auth/recovery-request" class="forgot-password">Forgot your password?</a>
+                                </div>
+                                <input type="submit" class="btn btn-primary form-control my-3" value="Sign In">
+                                <p class="py-4 text-center">
+                                    Don’t have an account? <a class="sign-up" href="/auth/register">Sign Up</a>
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 d-none d-md-block left-wrapper">
 
                 </div>
-                <input type="text" name="email" id="email" required>
-                <label for="password">password</label>
-                <input type="password" name="password" id="password">
-                <button type="submit">login</button>
-            </form>
-            <div class="btn-div">
-                <div class="url-btn">
-                    <button><a href="/auth/recovery-request">forgot password</a></button>
-                    <button> <a href="/auth/register">sign up</a></button>
-                    <button class="login-with-google"><a href="/auth/google/user-consent" >login with gmail</a></button>
-                    <button class="login-with-facebook"><a href="/auth/facebook/user-consent" >login with facebook</a></button>
-
-
-                </div>
-                <div class="btb"></div>
-                <div class="btb"></div>
-
             </div>
         </div>
     </div>
-</body>
-<script type="text/javascript" src="/static/login.js"></script>
 
+    <script src="/scripts/login.js"></script>
+</body>
 
 </html>

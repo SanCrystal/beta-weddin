@@ -1,59 +1,193 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="static/styles.css">
-    <title>authentication</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Beta-Weddin!</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="/styles/dasboard.css">
+
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 </head>
 
 <body>
+
     <div class="wrapper">
-        <header>
-            <h1>Dash Board</h1>
-            <% if(email){%>
-                <div>welcome
-                    <%= email%>
-                </div>
-                <%}%>
-        </header>
-
-    </div>
-    <div class="form-div">
-        <div class="server-response"></div>
-        <form action="/static/send-invite.js" method="POST">
-            <div class="error">
-
+        <!-- Sidebar -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <img src="/assets/images/logo-white.svg" alt="" width="60%">
             </div>
-            <label for="subject">subject</label>
-            <input type="text" name="subject" placeholder="subject" required>
-            <label for="email">sender name</label>
-            <input type="text" name="senderName" id="senderName" required>
-            <label for="bridesName">Brides Name</label>
-            <input type="text" name="bridesName" id="bridesName" required>
-            <label for="groomsName">Grooms Name</label>
-            <input type="text" name="groomsName" id="groomsName">
-            <label for="groomfamiliesName">Groom Familie's Name</label>
-            <input type="text" name="groomfamiliesName" id="groomfamiliesName">
-            <label for="bridefamiliesName">Bride Familie's Name</label>
-            <input type="text" name="bridefamiliesName" id="bridefamiliesName">
-            <label for="courtesyFamily">Courtesy Family</label>
-            <input type="text" name="courtesyFamily" id="courtesyFamily">
-            <label for="dateOfWedding">Date Of Wedding</label>
-            <input type="date" name="dateOfWedding" id="dateOfWedding">
-            <label for="emailList">Email Contact list</label>
-            <input type="textarea" name="emailList" id="emailList" placeholder="seperate emails with commas (,)">
+            <div class="px-4">
+                <img src="/assets/images/couple-img.png" alt="" width="40%">
+            </div>
 
-            <button type="submit">send invitation</button>
-        </form>
+
+            <ul class="list-unstyled components px-3">
+                <li class="active">
+                    <a href="#homeSubmenu">Dashboard</a>
+                </li>
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                <li>
+                    <a href="#">Edit profile</a>
+                </li>
+                <li>
+                    <a href="#">Guest List</a>
+                </li>
+                <li>
+                    <a href="#">Vendor</a>
+                </li>
+                <li>
+                    <a href="/support">Support</a>
+                </li>
+                <li>
+                    <a href="#">Settings</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content -->
+        <div id="content">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-primary">
+                        <i class="fas fa-align-left"></i>
+                        <span>Toggle Sidebar</span>
+                    </button>
+
+                </div>
+                <div class="container-fluid">
+
+                    <% if(email){%>
+                        <div class="px-3 text-center text-purple right-align">
+                            <h4 class="text-purple ">Welcome</h4> &nbsp;
+                            <%= email%>
+                        </div>
+                        <%}%>
+                </div>
+            </nav>
+            <section class="dashboard_wrapper pt-5">
+                <div class="container">
+                    <div class="py-3">
+                        <div class="input-group mb-3">
+                            <!-- <span class="input-group-text" id="basic-addon1">@</span> -->
+                            <input type="search" class="form-control empty" placeholder="&#xF002; search" aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+                    </div>
+                    <div id="banner" class="px-3">
+                        <div class="d-flex justify-content-between">
+                            <div class="text-purple my-auto p-3">
+                                <h2 class="pb-3">Hello Feyi & John</h2>
+                                <p class="pb-3">We hope your wedding is everything you imagined!</p>
+                                <button class="btn btn-primary">Pick your wedding date</button>
+                            </div>
+                            <div class="banner-img d-none d-md-block">
+                                <img src="../../../assets/images/banner.svg" alt="" height="100%" width="100%">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="dashboardCards">
+                        <div class="row mt-5">
+                            <div class="col-md-6 col-lg-4">
+                                <div class="card card-one">
+                                    <div class="card-body">
+                                        <h3 class="card-title">Send wedding invitation </h3>
+                                        <p class="card-text">You can create or send wedding invitations to your guests</p>
+                                        <a class="btn btn-primary" href="/dashboard/send-invite">Get started</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="card card-two">
+                                    <div class="card-body">
+                                        <h3 class="card-title">Accomodation</h3>
+                                        <p class="card-text">Book suitable hotels and affordable guest houses for invited guests.</p>
+                                        <button class="btn btn-primary">Book now</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="card card-three">
+                                    <div class="card-body">
+                                        <h3 class="card-title">Countdown</h3>
+                                        <p class="card-subtitle">Your wedding remains</p>
+                                        <div class="d-flex justify-content-between py-3 text-center">
+                                            <div>
+                                                <h3>65</h3>
+                                                <p>Days</p>
+                                            </div>
+                                            <div>
+                                                <h3>50</h3>
+                                                <p>Hours</p>
+                                            </div>
+                                            <div>
+                                                <h3>39</h3>
+                                                <p>Minutes</p>
+                                            </div>
+                                            <div>
+                                                <h3>15</h3>
+                                                <p>Seconds</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="card card-four">
+                                    <div class="card-body">
+                                        <h3 class="card-title">Share Location</h3>
+                                        <p class="card-text">Share your wedding venue through map for easy location</p>
+                                        <button class="btn btn-primary">Share</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="card card-five">
+                                    <div class="card-body">
+                                        <h3 class="card-title">Donations</h3>
+                                        <p class="card-text">Your friends and family can make donations towards your wedding plans</p>
+                                        <button class="btn btn-primary" routerLink="/donation">Learn more</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="card card-six">
+                                    <div class="card-body">
+                                        <h3 class="card-title">Photo gallery</h3>
+                                        <p class="card-text">Share and relive precious moments from your wedding with your friends and family </p>
+                                        <button class="btn btn-primary">View photo album</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
 
     </div>
-    <a href="/send-invite">send invitation</a>
-    </div>
+
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+    <script src="/app/dasboard.js"></script>
 
 </body>
-<script type="text/javascript" src="/static/send-invite.js"></script>
 
 </html>

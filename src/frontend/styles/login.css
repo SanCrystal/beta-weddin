@@ -1,0 +1,70 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+.left-wrapper {
+    min-height: 100vh;
+    /* position: fixed;
+    top: 0; */
+    background: url('/assets/images/login-bg.svg') no-repeat center center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-primary {
+    background-color: #5E194E;
+    border: 2px solid #5E194E;
+}
+
+.btn-primary:hover {
+    background-color: transparent;
+    color: #5E194E;
+    border: 2px solid #5E194E;
+}
+
+.form-control {
+    border: 2px solid rgba(94,25,78, .3);
+}
+
+a {
+    text-decoration: none;
+}
+
+.forgot-password {
+    color: #303030;
+}
+
+.sign-up {
+    color: #5E194E;
+}
+
+.click {
+    cursor: pointer;
+}
+
+#loader {
+    border: 1.6rem solid #fff;
+    border-radius: 50%;
+    border-top: 1.6rem solid #5E194E;
+    width: 12rem;
+    height: 12rem;
+    animation: spin 2s linear infinite;
+    transform: translate(50%, 50%);
+    position: fixed;
+    left: 40%;
+    top: 35%;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    100% {
+        transform: rotate(360deg)
+    }
+}

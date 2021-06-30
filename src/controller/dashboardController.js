@@ -13,8 +13,12 @@ const inviteTemplate = require('../templates/invite-templates/template-01');
 module.exports.getDashboard = async(req, res) => {
     res.status(200).render('dashboard.ejs');
 };
-
-module.exports.sendInvite = async(req, res) => {
+//get send invite
+module.exports.getSendInvite = async(req, res) => {
+    res.status(200).render('wedding-invitation-card.ejs');
+};
+//post send invite
+module.exports.postSendInvite = async(req, res) => {
     console.log('hrere')
     const selectedTemplate = "template_01"
     console.log(req.body)
@@ -55,5 +59,14 @@ module.exports.sendInvite = async(req, res) => {
         const errMessage = await errorHandler(error, email)
         if (errMessage) await res.status(500).json({ message: errMessage })
     }
+
+};
+
+//edit profile get handler
+module.exports.getEditProfile = async(req, res) => {
+
+};
+//edit profile post handler
+module.exports.postEditProfile = async(req, res) => {
 
 };

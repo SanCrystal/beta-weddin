@@ -1,0 +1,83 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+.left-wrapper {
+    height: 100vh;
+    background: url('/assets/images/Rectangle\ 238.svg') no-repeat center center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-primary {
+    background-color: #5E194E;
+    border: 2px solid #5E194E;
+}
+
+.btn-primary:hover {
+    background-color: transparent;
+    color: #5E194E;
+    border: 2px solid #5E194E;
+}
+
+.form-control {
+    border: 2px solid rgba(94,25,78, .3);
+}
+
+a {
+    text-decoration: none;
+}
+
+form {
+    background: #F9F2F7;
+}
+
+.forgot-password {
+    color: #303030;
+}
+
+.sign-up {
+    color: #5E194E;
+}
+
+.text-bold {
+    font-weight: bold;
+}
+
+.click {
+    cursor: pointer;
+}
+
+input[type="checkbox"]:checked {
+    box-shadow: 0 0 0 3px #5E194E;
+    color: #fff;
+    background: #5E194E;
+}
+
+
+#loader {
+    border: 1.6rem solid #fff;
+    border-radius: 50%;
+    border-top: 1.6rem solid #5E194E;
+    width: 12rem;
+    height: 12rem;
+    animation: spin 2s linear infinite;
+    transform: translate(50%, 50%);
+    position: fixed;
+    left: 40%;
+    top: 35%;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    100% {
+        transform: rotate(360deg)
+    }
+}

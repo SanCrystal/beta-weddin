@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+    <!-- Custom style -->
+    <link rel="stylesheet" href="/styles/wedding-profile.css">
+
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap" rel="stylesheet">
+
+    <title>Beta-weddin</title>
+</head>
+
+<body>
+    <div class="registration-page">
+        <div class="container-fluid">
+            <div class="d-none" id="loader"></div>
+            <div class="row align-items-center" id="register">
+                <div class="col-lg-6 d-none d-lg-block left-wrapper">
+
+                </div>
+                <div class="col-lg-6 right-wrapper p-5">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div class="right-wrapper__header py-3">
+                                <h2 class="form-header">Create Your Wedding Card </h2>
+                            </div>
+                            <form class="p-3" id="form" method="post">
+                                <div class="error text-danger" id=""></div>
+                                <div class="mb-3">
+                                    <label for="senderName" class="form-label">Sender's name</label>
+                                    <input type="text" class="form-control" id="senderName" placeholder="Please enter sender's name">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="bridesName" class="form-label">Bride's Name</label>
+                                    <input type="text" name="bridesName" class="form-control" id="bridesName" placeholder="Please enter Bride's Name">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="groomsName" class="form-label">Groom's Name</label>
+                                    <input type="text" name="groomsName" class="form-control" id="groomsName" placeholder="Please enter Groom's Name">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="groomfamiliesName" class="form-label">Groom's Family Name</label>
+                                    <input type="text" name="groomfamiliesName" class="form-control" id="groomfamiliesName" placeholder="Please enter Groom's family name">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="bridefamiliesName" class="form-label">Bride's Family Name</label>
+                                    <input type="text" name="bridefamiliesName" class="form-control" id="bridefamiliesName" placeholder="Please enter Bride's family name">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="courtesyFamily" class="form-label">Courtesy Family </label>
+                                    <input type="text" name="courtesyFamily" class="form-control" id="courtesyFamily" placeholder="Please enter courtesy family name">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="subject" class="form-label">subject </label>
+                                    <input type="text" name="subject" class="form-control" id="subject" placeholder="eg. traditional marriage">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="dateOfWedding" class="form-label">Date of Wedding </label>
+                                    <input type="date" name="dateOfWedding" class="form-control" id="dateOfWedding" placeholder="date of wedding">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="emailList" class="form-label">Invitation email List </label>
+                                    <textarea name="emailList" id="emailList" class="form-control " placeholder="enter emails seperated by comma(,)"></textarea>
+                                </div>
+
+                                <input type="submit" class="btn btn-primary form-control my-3" value="Send Invitation Card">
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/scripts/send-invite.js"></script>
+
+</body>
+
+</html>

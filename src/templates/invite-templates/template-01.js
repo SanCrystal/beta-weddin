@@ -27,7 +27,7 @@ module.exports.template_01 = (mailDetails) => {
                                 ${mailDetails.groomfamiliesName } and
                                     ${ mailDetails.bridefamiliesName } wish to invite you to the holy joining of the son
                                         ${ mailDetails.groomsName } and lovely daughter
-                                            ${ mailDetails.bridesName }on
+                                            ${ mailDetails.bridesName } on 
                                                 ${mailDetails.dateOfWedding }.</p>
                             <p> RSVP: very plenty lol</p>
                             <p>Courtesy :

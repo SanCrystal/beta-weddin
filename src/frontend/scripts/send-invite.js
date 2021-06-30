@@ -33,21 +33,23 @@ form.addEventListener('submit', async(e) => {
     const subject = form.subject.value;
     let emailList = form.emailList.value;
     const error = document.querySelector('.error')
-    const serverError = document.querySelector('.server-response');
-    serverError.innerHTML = "";
+        // const serverError = document.querySelector('.server-response');
+        // serverError.innerHTML = "";
 
     error.innerHTML = "";
-    //split email list comma seprated
+    error.classList.add('d-none')
+        //split email list comma seprated
     const emailArray = emailList.split(',');
     //check valid mails
     let valid = mailsChecks(emailArray);
 
     if (valid.errorMails.length > 1) {
+        error.classList.remove('d-none')
         return error.innerHTML = `correct the mail(s) and try again : ${errorMails}`
     } else {
         emailList = valid.validMails.join(', ');
         //make a fetch request to /dashboard/send-invite
-        const result = await fetch('dashboard/send-invite', {
+        const result = await fetch('send-invite', {
             headers: {
                 "Content-Type": "application/json"
             },
@@ -70,13 +72,16 @@ form.addEventListener('submit', async(e) => {
             location.assign(`${dataBody.url}`)
         } else if (data.status == 401) {
             // const dataBody = await result.json();
-            serverError.innerHTML = `<p>Unauthorize !you must be logged in to send an invite. login and try again</p>`
+            error.classList.remove('d-none')
+            error.innerHTML = `<p>Unauthorize !you must be logged in to send an invite. login and try again</p>`
         } else if (data.status == 503) {
             // const dataBody = await result.json();
-            serverError.innerHTML = `<p>Service is temporary down, we regret every inconvinience this may cause you</p>`
+            error.classList.remove('d-none')
+            error.innerHTML = `<p>Service is temporary down, we regret every inconvinience this may cause you</p>`
         } else if (data.status == 500) {
             const dataBody = await result.json();
-            serverError.innerHTML = `<p>${dataBody.message}</p>`
+            error.classList.remove('d-none')
+            error.innerHTML = `<p>${dataBody.message}</p>`
         }
     }
 

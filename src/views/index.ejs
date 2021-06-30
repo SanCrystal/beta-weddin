@@ -1,36 +1,211 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="static/styles.css">
-    <title>authentication</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+    <!-- Custom style -->
+    <link rel="stylesheet" href="/styles/style.css">
+
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap" rel="stylesheet">
+
+    <title>Beta-weddin</title>
 </head>
 
 <body>
-    <div class="wrapper">
-        <header>
-            <h1>Home page</h1>
-            <% if(email){%>
-                <div>welcome
-                    <%= email%>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-purple">
+            <div class="container">
+                <img src="/assets/images/logo.svg" alt="" width="100">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item px-3">
+                            <a class="nav-link active" aria-current="page" href="/">Home</a>
+                        </li>
+                        <li class="nav-item px-3">
+                            <a class="nav-link" href="/about">About</a>
+                        </li>
+                        <li class="nav-item px-3">
+                            <a class="nav-link" href="/contact">Contact</a>
+                        </li>
+                        <!-- <li class="nav-item px-3">
+                    <a class="nav-link" href="/support.html">Support</a>
+                  </li> -->
+                        <%if(email){%>
+                            <li class="nav-item px-3">
+                                <a class="nav-link" href="/dashboard">Dashboard</a>
+                            </li>
+                            <li class="nav-item px-3">
+                                <a class="nav-link" href="/auth/logout">logout</a>
+                            </li>
+                            <li class="nav-item px-3">
+                                <p class="nav-link">
+                                    Welcome &nbsp;
+                                    <%= email%>
+                                </p>
+                            </li>
+                            <%}else{%>
+                                <li class="nav-item px-3">
+                                    <a class="nav-link" href="/auth/login">Login</a>
+                                </li>
+                                <li class="nav-item px-3">
+                                    <a class="btn btn-primary px-3 py-1" href="/auth/register">Sign Up</a>
+                                </li>
+                                <%}%>
+
+                    </ul>
                 </div>
-                <%}%>
-        </header>
-        <div class="nav">
-            <ul>
-                <li><a href="/">home</a></li>
-                <li><a href="/auth/login">login</a></li>
-                <li><a href="/auth/register">sign up</a></li>
-                <a href="/auth/logout">logout</a>
-            </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section id="banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7 pt-5">
+                    <div class="title pt-5">
+                        <h2 class="text-purple py-3">
+                            Keep your friends and <br> family updated about <br> your big day!
+                        </h2>
+                        <p class="pb-3">
+                            Create beautiful and life-time memories with your freinds <br> and family...
+                        </p>
+                        <a href="/auth/register" class="btn btn-primary px-5 py-3">GET STARTED</a>
+                    </div>
+                    <div class="flower-img d-none d-lg-block">
+                        <img src="/assets/images/image 4.svg" alt="">
+                    </div>
+                </div>
+                <div class="col-md-5 d-none d-lg-block py-5">
+                    <div class="couple-img d-flex justify-content-end">
+                        <img class="outer" src="/assets/images/banner-img.svg" alt="">
+                        <img class="inner" src="/assets/images/Ellipse 1.svg" alt="">
+                    </div>
+                </div>
+            </div>
         </div>
-        <a href="/dashboard/send-invite">send invitation</a>
-    </div>
+    </section>
 
+    <section id="categories">
+        <div class="container">
+            <div class="title py-5">
+                <h3 class="text-bold">Explore by our categories</h3>
+            </div>
+            <div class="row pt-3 pb-5">
+                <div class="col-md-3 px-4 py-3">
+                    <div class="card first_card py-3">
+                        <img src="/assets/images/book.svg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Send Wedding Invitation</h5>
+                            <p class="card-text">Send wedding invites to your friends and family from the comfort of your home</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 px-4 py-3">
+                    <div class="card second_card py-3">
+                        <img src="/assets/images/checkbox.svg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Hotel Booking</h5>
+                            <p class="card-text">Book accommodation for your invited guests</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 px-4 py-3">
+                    <div class="card third_card py-3">
+                        <img src="/assets/images/location.svg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Share Location</h5>
+                            <p class="card-text">Our mobile app allows you to share your wedding venue with invited guests.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 px-4 py-3">
+                    <div class="card fourth_card py-3">
+                        <img src="/assets/images/support.svg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Recieve Gifts and Donations</h5>
+                            <p class="card-text">Receive wedding gifts and donations from your guests</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="intro">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-md-6 py-3 px-5">
+                    <img src="/assets/images/Rectangle 235.svg" alt="" width="100%">
+                </div>
+                <div class="col-md-6">
+                    <div class="title text-white pt-5 px-5">
+                        <h4 class="text-white">Welcome to Beta Wedding</h4>
+                        <div class="content py-3">
+                            <p>
+                                We are your easy guide to having your dream wedding without stress. We offer you the perfect wedding day that you have always imagined and the one that leaves a long lasting impression on your guests.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="title text-white pt-5 px-5">
+                        <h4 class="text-white">Here is why you should choose us</h4>
+                        <div class="content py-3">
+                            <p>
+                                We are the number one wedding planner according to the International Event Planner times. We offer wide range of services that doesn’t only involve planning your wedding but we also ensure that your guests are accurately catered for. We also offer live
+                                streaming services for your invited guests who may not be able to attend your big day
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 py-3 px-5">
+                    <img src="/assets/images/Rectangle 236.svg" alt="" width="100%">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="download">
+        <div class="container py-5">
+            <div class="row title">
+                <div class="col-md-5">
+                    <h3 class="text-bold">Download the mobile app for maximum experience</h3>
+                    <div class="d-flex justify-content-between py-5">
+                        <div>
+                            <img class="click" src="/assets/images/Property 1=Google Play, Property 2=Black.svg" alt="" width="90%">
+                        </div>
+                        <div>
+                            <img class="click" src="/assets/images/Property 1=App Store, Property 2=Black.svg" alt="" width="80%">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+    -->
 </body>
-
 
 </html>

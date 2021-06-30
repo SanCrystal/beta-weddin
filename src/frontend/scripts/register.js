@@ -16,19 +16,22 @@ const nameCheck = (name) => {
 };
 form.addEventListener('submit', async(e) => {
     e.preventDefault();
+
     //get form values
     const fullName = form.fullName.value;
     const email = form.email.value;
     const password = form.password.value;
     const confirmPassword = form.confirmPassword.value;
     const error = document.querySelector('.error')
-    const serverError = document.querySelector('.server-response');
-    serverError.innerHTML = ""
+    console.log('this', fullName, email, password)
+        // const serverError = document.querySelector('.server-response');
+        // serverError.innerHTML = ""
     if (nameCheck(fullName)) {
         //check if the email is valid
         if (emailValidator(email)) {
             //check if the password matches 
             if (password === confirmPassword) {
+                error.classList.add('d-none')
                 error.innerHTML = ""
                     //make a fetch request to /register
                 const result = await fetch('register', {
@@ -48,21 +51,26 @@ form.addEventListener('submit', async(e) => {
                     location.assign(`${dataBody.url}`)
                 } else if (data.status == 503) {
                     // const dataBody = await result.json();
-                    serverError.innerHTML = `<p>Service is temporary down, we regret every inconvinience this may cause you</p>`
+                    error.classList.remove('d-none')
+                    error.innerHTML = `<p>Service is temporary down, we regret every inconvinience this may cause you</p>`
                 } else if (data.status == 500) {
                     const dataBody = await result.json();
-                    serverError.innerHTML = `<p>${dataBody.message}</p>`
+                    error.classList.remove('d-none')
+                    error.innerHTML = `<p>${dataBody.message}</p>`
                 }
             } else {
                 //if password do not match
+                error.classList.remove('d-none')
                 error.innerHTML = "<p>Passwords do not match!</p>"
             }
         } else {
             //if email do not match
+            error.classList.remove('d-none')
             error.innerHTML = "<p>please enter a invalid email</p>"
         }
     } else {
         //check if the name is above or equal to two characters long
+        error.classList.remove('d-none')
         error.innerHTML = "<p>First name  or last name cannot be an abbreviation</p>"
     }
 })

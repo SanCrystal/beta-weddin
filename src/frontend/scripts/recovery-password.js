@@ -10,13 +10,14 @@ form.addEventListener('submit', async(e) => {
     e.preventDefault();
     //get form values
     const email = form.email.value;
-    const error = document.querySelector('.error')
-    const serverError = document.querySelector('.server-response');
-    serverError.innerHTML = ""
+    const error = document.querySelector('#error-results')
+        // const serverError = document.querySelector('.server-response');
+        // serverError.innerHTML = ""
     console.log(email)
     if (emailValidator(email)) {
         error.innerHTML = ""
-            //make a fetch request to /login
+        error.classList.add('d-none');
+        //make a fetch request to /login
         const result = await fetch('recovery-auth-pass', {
             headers: {
                 "Content-Type": "application/json"
@@ -35,15 +36,18 @@ form.addEventListener('submit', async(e) => {
         } else if (data.status == 500) {
             const dataBody = await result.json();
             if (dataBody.message.code === 'EDNS') {
-                return serverError.innerHTML = `<p>Could not  establish connection, check your network connection and try again</p>`
+                return error.innerHTML = `<p>Could not  establish connection, check your network connection and try again</p>`
             }
             console.log(dataBody.message.code === 'EDNS')
-            serverError.innerHTML = `<p>${dataBody.message}</p>`
+            error.classList.remove('d-none')
+            error.innerHTML = `<p>${dataBody.message}</p>`
         } else if (data.status == 404) {
             const dataBody = await result.json();
-            serverError.innerHTML = `<p>${dataBody.message}</p>`
+            error.classList.remove('d-none');
+            error.innerHTML = `<p>${dataBody.message}</p>`
         }
     } else {
+        error.classList.remove('d-none')
         error.innerHTML = "<p>please enter a invalid email</p>"
     }
 })
